@@ -54,15 +54,13 @@
 # Deploys the file /etc/sysconfig/network/ifroute-$name.
 #
 define network::mroute (
-  $routes,
+  Hash $routes,
   $interface           = $name,
   $config_file_notify  = 'class_default',
   $ensure              = 'present',
   $route_up_template   = undef,
   $route_down_template = undef,
 ) {
-  # Validate our arrays
-  validate_hash($routes)
 
   include ::network
 
